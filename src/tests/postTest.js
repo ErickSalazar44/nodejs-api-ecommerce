@@ -1,17 +1,14 @@
 const sequelize = require("../utils/connection");
-const userCreate = require("./createData/userCreate");
 require("../models");
 
-const testMigrate = async () => {
+const postTest = async () => {
     try {
         await sequelize.sync({ force: true });
         console.log("DB reset ✅");
-        // crear un usuario al inicializar el test
-        await userCreate();
         process.exit();
     } catch (error) {
         console.error(error);
     }
 };
 
-testMigrate();
+postTest();
